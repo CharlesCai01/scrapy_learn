@@ -20,3 +20,6 @@ class TutorItem(scrapy.Item):
     award = scrapy.Field() #获奖情况
     sciResearPro = scrapy.Field() #科研项目
     talentTrain = scrapy.Field() #人才培养
+    image_urls = scrapy.Field() #图片链接
+    image = scrapy.Field() #图片
+    image_paths = scrapy.Field()

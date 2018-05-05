@@ -16,6 +16,7 @@ class TutorSpider(scrapy.Spider):
         for tutor in response.xpath("//li[@class='fl']"):
             # 爬取姓名，职称，专业，邮箱
             item = TutorItem()
+            item['image_urls'] = {"http://ggglxy.scu.edu.cn"+tutor.xpath("div[@class='l fl']/a/img/@src").extract_first()}
             item['name'] = tutor.xpath("div[@class='r fr']/h3[@class='mb10']/text()").extract_first()
             item['position'] = tutor.xpath("div[@class='r fr']/p[@class='color_main f14']/text()").extract_first()
             item['major'] = tutor.xpath("div[@class='r fr']/div[@class='desc']/p[1]/text()").extract_first()

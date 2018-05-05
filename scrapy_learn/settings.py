@@ -65,9 +65,12 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'scrapy_learn.pipelines.ScrapyLearnPipeline': 300,
-#}
+ITEM_PIPELINES = {
+    'scrapy_learn.pipelines.TutorImagesPipeline': 1,
+}
+IMAGES_STORE = 'D:\MyWorkspace\PythonWorkspace\scrapy_learn\img' #图片存储目录
+# 90天的图片失效期限
+IMAGES_EXPIRES = 30
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
