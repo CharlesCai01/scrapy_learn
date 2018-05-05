@@ -16,12 +16,12 @@ class TutorSpider(scrapy.Spider):
             yield scrapy.Request(url,callback=self.parse_details)
 
             ## 是否还有下一页，如果有的话，则继续
-            next_page=response.xpath("//div[@class='pager cf tc pt10 pb10 mobile_dn']/li[last()-1]/a/@href").extract_first()
+        next_page=response.xpath("//div[@class='pager cf tc pt10 pb10 mobile_dn']/li[last()-1]/a/@href").extract_first()
 
-            if next_page is not None:
-                next_pages = response.urljoin(next_page)
-                ## 将 「下一页」的链接传递给自身，并重新分析
-                yield scrapy.Request(next_pages, callback = self.parse)
+        if next_page is not None:
+            next_pages = response.urljoin(next_page)
+            ## 将 「下一页」的链接传递给自身，并重新分析
+            yield scrapy.Request(next_pages, callback = self.parse)
 
 # 编写爬取方法
     def parse_details(self, response):
