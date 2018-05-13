@@ -9,12 +9,12 @@ class TutorSpider(scrapy.Spider):
     name = 'tutor'
     allowed_domains = ['ggglxy.scu.edu.cn']
     start_urls=['http://ggglxy.scu.edu.cn/index.php?c=article&a=type&tid=18']
-    # 初始化item对象保存爬取的信息
-    item = TutorItem()
+    
     
     def parse(self,response):
         for tutor in response.xpath("//li[@class='fl']"):
             # 爬取姓名，职称，专业，邮箱
+            #初始化item对象保存爬取的信息
             item = TutorItem()
             item['image_urls'] = {"http://ggglxy.scu.edu.cn"+tutor.xpath("div[@class='l fl']/a/img/@src").extract_first()}
             item['name'] = tutor.xpath("div[@class='r fr']/h3[@class='mb10']/text()").extract_first()
